@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <%- include('partials/header.ejs') -%>
+</head>
+<body>
+
+    <%- include('partials/navbar.ejs') -%>
+    <br>
+
+    <div class="container">
+        
+        <h1> <%= ask.titulo %></h1>
+        <hr>
+        <p><%= ask.descricao %></p>
+        <br>
+        <form action="/comentarios" method="POST">
+            
+            <h5>Comentários</h5>
+            <div class="form-control">
+                
+                <textarea name="texto" class="form-control" placeholder="Leave a comment here"  style="height: 100px"></textarea>
+                
+                <input type="hidden" name="pergunta" value="<%= ask.titulo %>">
+                <button type="submit" class="btn btn-outline-secondary">Comentar</button>
+                
+
+            </div>
+            <hr>
+            <h4>Comentários</h4>
+            <%  respondidas.forEach(resposta => {%>
+                <%= resposta.texto %>
+                <%
+
+            })
+            
+            
+            %>
+            
+        </form>
+       
+    </div>
+
+    
+    
+</body>
+<%- include('partials/footer.ejs') -%>
+</html>
